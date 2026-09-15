@@ -1,1 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sabor & Mesa | Administração</title>
+
+    <link rel="stylesheet" href="painel.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Sabor & Mesa · Administração</h1>
+
+        <button id="sair" class="secundario">
+            Sair
+        </button>
+    </header>
+
+    <main>
+
+        <section id="login" class="login">
+            <h2>Acesso administrativo</h2>
+
+            <label>
+                E-mail
+            </label>
+
+            <input id="email" type="email">
+
+            <label>
+                Senha
+            </label>
+
+            <input id="senha" type="password">
+
+            <p id="erro"></p>
+
+            <button id="entrar">
+                Entrar
+            </button>
+        </section>
+
+
+        <section id="area" class="oculto">
+
+            <div class="grade-admin">
+
+                <form id="produto-form" class="produto-admin">
+
+                    <h2 id="titulo">
+                        Novo produto
+                    </h2>
+
+                    <input id="id" type="hidden">
+
+                    <label>
+                        Nome
+                        <input id="nome" required>
+                    </label>
+
+                    <label>
+                        Descrição
+                        <textarea id="descricao"></textarea>
+                    </label>
+
+                    <label>
+                        Preço
+                        <input
+                            id="preco"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Categoria
+
+                        <select id="categoria">
+                            <option value="entradas">
+                                Entradas
+                            </option>
+
+                            <option value="prato-principal">
+                                Prato principal
+                            </option>
+
+                            <option value="sobremesas">
+                                Sobremesas
+                            </option>
+
+                            <option value="bebidas">
+                                Bebidas
+                            </option>
+
+                            <option value="vinhos">
+                                Carta de vinhos
+                            </option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Imagem
+
+                        <input
+                            id="imagem"
+                            type="file"
+                            accept="image/*"
+                        >
+                    </label>
+
+                    <label>
+                        <input
+                            id="disponivel"
+                            type="checkbox"
+                            checked
+                        >
+
+                        Disponível
+                    </label>
+
+                    <button>
+                        Salvar produto
+                    </button>
+
+                    <button
+                        id="cancelar"
+                        type="button"
+                        class="secundario"
+                    >
+                        Cancelar edição
+                    </button>
+
+                </form>
+
+
+                <section>
+
+                    <div class="barra">
+
+                        <h2>
+                            Produtos cadastrados
+                        </h2>
+
+                        <button
+                            id="novo"
+                            class="secundario"
+                        >
+                            Novo produto
+                        </button>
+
+                    </div>
+
+                    <div id="produtos"></div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
