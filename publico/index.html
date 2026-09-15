@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cardápio digital do restaurante Sabor & Mesa.">
+  <title>Sabor & Mesa | Cardápio Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="#inicio" aria-label="Sabor e Mesa - início">
+      <span class="marca-icone">✦</span>
+      <span>Sabor <em>&amp;</em> Mesa</span>
+    </a>
+    <button class="botao-pedido-mobile" type="button" aria-controls="meu-pedido">Meu pedido <span id="contador-mobile">0</span></button>
+  </header>
 
+  <main id="inicio" class="pagina">
+    <section class="hero">
+      <p class="sobretitulo">Experiência gastronômica</p>
+      <h1>Seu pedido começa<br>com um bom sabor.</h1>
+      <p>Escolha seus pratos favoritos e monte seu pedido com tranquilidade.</p>
+    </section>
+
+    <div class="layout">
+      <section class="cardapio" aria-label="Cardápio">
+        <div class="cabecalho-cardapio">
+          <div>
+            <p class="sobretitulo">Nosso cardápio</p>
+            <h2>O que vai pedir hoje?</h2>
+          </div>
+          <label class="campo-busca">
+            <span class="visualmente-oculto">Pesquisar produto</span>
+            <input id="busca" type="search" placeholder="Buscar no cardápio">
+            <span aria-hidden="true">⌕</span>
+          </label>
+        </div>
+
+        <nav class="categorias" aria-label="Categorias do cardápio">
+          <button class="categoria ativa" type="button" data-categoria="todos">Todos</button>
+          <button class="categoria" type="button" data-categoria="entradas">Entradas</button>
+          <button class="categoria" type="button" data-categoria="prato-principal">Prato principal</button>
+          <button class="categoria" type="button" data-categoria="sobremesas">Sobremesas</button>
+          <button class="categoria" type="button" data-categoria="bebidas">Bebidas</button>
+          <button class="categoria" type="button" data-categoria="vinhos">Carta de vinhos</button>
+        </nav>
+
+        <div class="filtros">
+          <label>Faixa de preço
+            <select id="filtro-preco">
+              <option value="todos">Todos os preços</option>
+              <option value="ate-30">Até R$ 30</option>
+              <option value="30-60">De R$ 30 a R$ 60</option>
+              <option value="acima-60">Acima de R$ 60</option>
+            </select>
+          </label>
+          <label>Ordenar
+            <select id="ordenacao">
+              <option value="padrao">Recomendados</option>
+              <option value="menor-preco">Menor preço</option>
+              <option value="maior-preco">Maior preço</option>
+              <option value="nome">Nome: A–Z</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="lista-produtos" class="lista-produtos" aria-live="polite">
+          <div class="estado-vazio-cardapio">
+            <span>🍽</span>
+            <h3>O cardápio será exibido aqui</h3>
+            <p>Os produtos serão carregados da base de dados em breve.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside id="meu-pedido" class="pedido" aria-label="Meu Pedido">
+        <div class="cabecalho-pedido">
+          <div>
+            <p class="sobretitulo">Sua seleção</p>
+            <h2>Meu Pedido <span id="contador-pedido">0</span></h2>
+          </div>
+          <button id="limpar-pedido" class="botao-texto" type="button">Limpar</button>
+        </div>
+
+        <div id="itens-pedido" class="itens-pedido">
+          <div class="pedido-vazio">
+            <span>🛒</span>
+            <p>Seu pedido está vazio.</p>
+            <small>Adicione itens do cardápio para começar.</small>
+          </div>
+        </div>
+
+        <div class="totais">
+          <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+          <label class="opcao-garcom">
+            <span>
+              <strong>Serviço do garçom</strong>
+              <small>10% opcional</small>
+            </span>
+            <input id="taxa-garcom" type="checkbox">
+            <span class="interruptor" aria-hidden="true"></span>
+          </label>
+          <div><span>Taxa de serviço</span><strong id="valor-garcom">R$ 0,00</strong></div>
+          <div class="total-final"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+        </div>
+
+        <form id="formulario-cliente" class="dados-cliente">
+          <h3>Dados para finalizar</h3>
+          <label>Seu nome<input id="nome-cliente" type="text" placeholder="Digite seu nome" required></label>
+          <label>Número da mesa<input id="numero-mesa" type="text" inputmode="numeric" placeholder="Ex.: 12" required></label>
+          <label>Observações<textarea id="observacoes" rows="2" placeholder="Alguma preferência? (opcional)"></textarea></label>
+          <button class="botao-finalizar" type="submit">Finalizar pedido <span>→</span></button>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <div id="modal-resumo" class="modal" hidden>
+    <div class="modal-conteudo" role="dialog" aria-modal="true" aria-labelledby="titulo-resumo">
+      <button id="fechar-modal" class="fechar-modal" type="button" aria-label="Fechar">×</button>
+      <span class="confirmacao">✓</span>
+      <h2 id="titulo-resumo">Pedido recebido!</h2>
+      <div id="conteudo-resumo"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="cardapio.js"></script>
+</body>
+</html>
