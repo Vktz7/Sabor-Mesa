@@ -1,1 +1,157 @@
+:root {
+    --v: #5a1d2c;
+    --f: #fbf7f1;
+    --t: #28221f;
+    --b: #e1d7ca;
+    --g: #2e634f;
+}
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--f);
+    color: var(--t);
+    font: 15px Arial, sans-serif;
+}
+
+header {
+    padding: 20px 6vw;
+    background: #fffdf9;
+    border-bottom: 1px solid var(--b);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    color: var(--v);
+    font-family: Georgia, serif;
+}
+
+main {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+.login {
+    max-width: 380px;
+    margin: 80px auto;
+    padding: 28px;
+    background: #fff;
+    border: 1px solid var(--b);
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin: 14px 0 5px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--b);
+    border-radius: 5px;
+    background: #fff;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 14px;
+    background: var(--v);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.secundario {
+    background: #eee;
+    color: var(--t);
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.pedidos {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(270px, 1fr)
+    );
+    gap: 15px;
+}
+
+.pedido-card,
+.produto-admin {
+    padding: 18px;
+    background: #fff;
+    border: 1px solid var(--b);
+    border-radius: 9px;
+}
+
+.pedido-card h3 {
+    margin: 0 0 8px;
+}
+
+.pedido-card p {
+    margin: 7px 0;
+}
+
+.status {
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+.grade-admin {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 25px;
+}
+
+.produto-admin {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.produto-admin img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+@media (max-width: 700px) {
+    .grade-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .produto-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .barra {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
